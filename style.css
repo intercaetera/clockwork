@@ -1,0 +1,94 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+.popup {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  background: #ddd;
+  padding: 16px;
+  border: 1px rgba(0,0,0,0.5) solid;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: sans-serif;
+  font-size: 0.8em;
+}
+.popup .title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 0;
+}
+.popup .title span {
+  user-select: none;
+  cursor: pointer;
+  align-self: flex-end;
+}
+.popup .content {
+  padding: 4px 0;
+  width: 200px;
+}
+.popup .content form {
+  display: flex;
+  flex-direction: column;
+}
+.popup .content form input {
+  width: 200px;
+}
+.popup .content form input[type="text"] {
+  display: block;
+  padding: 4px;
+}
+.popup .content form input[type="submit"] {
+  padding: 4px;
+  margin: 4px auto 0 auto;
+}
+.toolbar {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 8px;
+}
+.toolbar .toolbar-button {
+  height: 32px;
+  min-width: 32px;
+  padding: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  user-select: none;
+  cursor: pointer;
+}
+.toolbar .toolbar-separator {
+  height: 32px;
+  min-width: 16px;
+  padding: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  user-select: none;
+  cursor: default;
+  color: #aaa;
+}
+.textarea {
+  height: 360px;
+  width: 100%;
+  padding: 0 8px;
+}
+.textarea textarea {
+  height: 100%;
+  width: 100%;
+  padding: 8px;
+}
