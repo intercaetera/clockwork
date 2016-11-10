@@ -62,7 +62,7 @@
   padding: 0 8px;
 }
 .toolbar .toolbar-button {
-  height: 32px;
+  min-height: 32px;
   min-width: 32px;
   padding: 0 8px;
   display: flex;
@@ -73,7 +73,7 @@
   cursor: pointer;
 }
 .toolbar .toolbar-separator {
-  height: 32px;
+  min-height: 32px;
   min-width: 16px;
   padding: 0 8px;
   display: flex;
@@ -84,13 +84,8 @@
   cursor: default;
   color: #aaa;
 }
-.textarea {
-  height: 90%;
+textarea {
   width: 100%;
-  padding: 0 8px;
-}
-.textarea textarea {
   height: 100%;
-  width: 100%;
   padding: 8px;
 }
