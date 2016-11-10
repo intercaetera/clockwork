@@ -10,6 +10,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+//The object editables are at the bottom of the file.
+
 var textarea = document.querySelector("#text-field");
 
 var ToolbarElement = function ToolbarElement(title, description) {
@@ -372,37 +374,32 @@ function getSelectedText(input) {
 }
 
 //Toolbar items
+
+//Basic formatting
 var bold = new GenericElement("b", "Bold", "b");
 var italic = new GenericElement("i", "Italic", "i");
 var underline = new GenericElement("u", "Underline", "u");
 var strikethrough = new GenericElement("s", "Strikethrough", "s");
-
-addSeparator();
-
-var indent = new GenericElement("indent", "Absolute indentation", "indent");
-var code = new GenericElement("code", "Code block", "code");
-
-addSeparator();
-
+addSeparator(); //Alignment
+var align = new PopupComboElement("align", "Text align", "align", "Align direction:", ['left', 'center', 'right', 'justify']);
+addSeparator(); //Font options
+var font = new PopupComboElement("font", "Font family", "font", "Select font family:", ['Arial', 'Open Sans', 'Agency FB', 'Orbitron', 'Oswald', 'Merienda One', 'Verdana', 'Tahoma', 'Consolas']);
+var size = new PopupComboElement("size", "Font size", "size", "Select font size:", ['xx-small', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large']);
+var color = new PopupColourElement("color", "Colour", "color", "Choose a colour:");
+addSeparator(); //HR
+var hr = new GenericStaticElement("hr", "Horizontal rule", "hr");
+addSeparator(); //Embeddables and links
+var img = new PopupInputElement("img", "Image", "img", "Insert image size (optional)");
+var url = new PopupInputElement("url", "Hyperlink", "url", "Insert URL:");
+var video = new PopupComboElement("video", "Video", "video", "Select the provider:", ['youtube', 'vimeo', 'facebook']);
+addSeparator(); //Lists
 var list = new GenericElement("list", "Unordered list", "list");
 var orderedList = new GenericElement("list=1", "Ordered list", "list=1");
 var bulletPoint = new GenericStaticElement("*", "List point", "*");
-
-addSeparator();
-
-var hr = new GenericStaticElement("hr", "Horizontal rule", "hr");
-
-addSeparator();
-
-var url = new PopupInputElement("url", "Hyperlink", "url", "Insert URL:");
+addSeparator(); //Blocks
 var quote = new PopupInputElement("quote", "Quote", "quote", "Insert the author's name:");
+var code = new GenericElement("code", "Code block", "code");
+addSeparator(); //Indents
+var indent = new GenericElement("indent", "Absolute indentation", "indent");
 var piAmount = new PopupInputElement("pi", "Percentage indent", "pi", "Indentation percent:");
-
-addSeparator();
-
-var color = new PopupColourElement("color", "Colour", "color", "Choose a colour:");
-
-addSeparator();
-
-var align = new PopupComboElement("align", "Text align", "align", "Align direction:", ['left', 'center', 'right', 'justify']);
 //# sourceMappingURL=/home/mrhudson/nodejs/script.js.map

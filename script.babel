@@ -1,3 +1,5 @@
+//The object editables are at the bottom of the file.
+
 let textarea = document.querySelector("#text-field")
 
 class ToolbarElement {
@@ -255,36 +257,31 @@ function getSelectedText(input) {
 }
 
 //Toolbar items
+
+//Basic formatting
 const bold = new GenericElement("b", "Bold", "b")
 const italic = new GenericElement("i", "Italic", "i")
 const underline = new GenericElement("u", "Underline", "u")
 const strikethrough = new GenericElement("s", "Strikethrough", "s")
-
-addSeparator()
-
-const indent = new GenericElement("indent", "Absolute indentation", "indent")
-const code = new GenericElement("code", "Code block", "code")
-
-addSeparator()
-
+addSeparator() //Alignment
+const align = new PopupComboElement("align", "Text align", "align", "Align direction:", ['left', 'center', 'right', 'justify'])
+addSeparator() //Font options
+const font = new PopupComboElement("font", "Font family", "font", "Select font family:", ['Arial', 'Open Sans', 'Agency FB', 'Orbitron', 'Oswald', 'Merienda One', 'Verdana', 'Tahoma', 'Consolas'])
+const size = new PopupComboElement("size", "Font size", "size", "Select font size:", ['xx-small', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large'])
+const color = new PopupColourElement("color", "Colour", "color", "Choose a colour:")
+addSeparator() //HR
+const hr = new GenericStaticElement("hr", "Horizontal rule", "hr")
+addSeparator() //Embeddables and links
+const img = new PopupInputElement("img", "Image", "img", "Insert image size (optional)")
+const url = new PopupInputElement("url", "Hyperlink", "url", "Insert URL:")
+const video = new PopupComboElement("video", "Video", "video", "Select the provider:", ['youtube', 'vimeo', 'facebook'])
+addSeparator() //Lists
 const list = new GenericElement("list", "Unordered list", "list")
 const orderedList = new GenericElement("list=1", "Ordered list", "list=1")
 const bulletPoint = new GenericStaticElement("*", "List point", "*")
-
-addSeparator()
-
-const hr = new GenericStaticElement("hr", "Horizontal rule", "hr")
-
-addSeparator()
-
-const url = new PopupInputElement("url", "Hyperlink", "url", "Insert URL:")
+addSeparator() //Blocks
 const quote = new PopupInputElement("quote", "Quote", "quote", "Insert the author's name:")
+const code = new GenericElement("code", "Code block", "code")
+addSeparator() //Indents
+const indent = new GenericElement("indent", "Absolute indentation", "indent")
 const piAmount = new PopupInputElement("pi", "Percentage indent", "pi", "Indentation percent:")
-
-addSeparator()
-
-const color = new PopupColourElement("color", "Colour", "color", "Choose a colour:")
-
-addSeparator()
-
-const align = new PopupComboElement("align", "Text align", "align", "Align direction:", ['left', 'center', 'right', 'justify'])
