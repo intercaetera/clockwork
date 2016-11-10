@@ -8,6 +8,7 @@ class ToolbarElement {
   }
 }
 
+//Inserts a single tag into the code.
 class GenericStaticElement extends ToolbarElement {
   constructor(title, description, tag) {
     super(title, description)
@@ -22,6 +23,7 @@ class GenericStaticElement extends ToolbarElement {
   }
 }
 
+//Wraps selected text.
 class GenericElement extends GenericStaticElement {
   constructor(title, description, tag) {
     super(title, description, tag)
