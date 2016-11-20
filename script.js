@@ -12,7 +12,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 //The object editables are at the bottom of the file.
 
-var textarea = document.querySelector("#text-field");
+function $(q) {
+  return document.querySelector(q);
+}
+
+var textarea = $("#text-field");
 
 var ToolbarElement = function ToolbarElement(title, description) {
   _classCallCheck(this, ToolbarElement);
@@ -82,14 +86,16 @@ var GenericElement = function (_GenericStaticElement) {
 //Top-level class for popups.
 
 
-var PopupElement = function () {
+var PopupElement = function (_ToolbarElement2) {
+  _inherits(PopupElement, _ToolbarElement2);
+
   function PopupElement(title, description, tag) {
     _classCallCheck(this, PopupElement);
 
-    this.title = title;
-    this.description = description;
-    this.tag = tag;
-    addElementToToolbar(this);
+    var _this3 = _possibleConstructorReturn(this, (PopupElement.__proto__ || Object.getPrototypeOf(PopupElement)).call(this, title, description));
+
+    _this3.tag = tag;
+    return _this3;
   }
 
   _createClass(PopupElement, [{
@@ -99,7 +105,7 @@ var PopupElement = function () {
       //Generate all the popup elements.
       var popup = document.createElement("div");
       popup.classList.add("popup");
-      document.querySelector(".wrapper").appendChild(popup);
+      $(".wrapper").appendChild(popup);
 
       var popupTitleContainer = document.createElement("div");
       popupTitleContainer.classList.add("title");
@@ -145,14 +151,14 @@ var PopupElement = function () {
     key: "close",
     value: function close() {
       //Close the popup.
-      var wrapper = document.querySelector(".wrapper");
-      var popup = document.querySelector(".popup");
+      var wrapper = $(".wrapper");
+      var popup = $(".popup");
       wrapper.removeChild(popup);
     }
   }]);
 
   return PopupElement;
-}();
+}(ToolbarElement);
 
 //Element with a single label and text input.
 
@@ -163,16 +169,16 @@ var PopupInputElement = function (_PopupElement) {
   function PopupInputElement(title, description, tag, label) {
     _classCallCheck(this, PopupInputElement);
 
-    var _this3 = _possibleConstructorReturn(this, (PopupInputElement.__proto__ || Object.getPrototypeOf(PopupInputElement)).call(this, title, description, tag));
+    var _this4 = _possibleConstructorReturn(this, (PopupInputElement.__proto__ || Object.getPrototypeOf(PopupInputElement)).call(this, title, description, tag));
 
-    _this3.label = label;
-    return _this3;
+    _this4.label = label;
+    return _this4;
   }
 
   _createClass(PopupInputElement, [{
     key: "activate",
     value: function activate(input) {
-      var _this4 = this;
+      var _this5 = this;
 
       var obj = _get(PopupInputElement.prototype.__proto__ || Object.getPrototypeOf(PopupInputElement.prototype), "activate", this).call(this);
 
@@ -196,13 +202,13 @@ var PopupInputElement = function (_PopupElement) {
         var output = void 0;
         if (attribute.trim() != "") {
           //if the input box is not empty
-          output = selected.before + "[" + _this4.tag + "=" + attribute + "]" + selected.centre + "[/" + _this4.tag + "]" + selected.after;
+          output = selected.before + "[" + _this5.tag + "=" + attribute + "]" + selected.centre + "[/" + _this5.tag + "]" + selected.after;
         } else {
-          output = selected.before + "[" + _this4.tag + "]" + selected.centre + "[/" + _this4.tag + "]" + selected.after;
+          output = selected.before + "[" + _this5.tag + "]" + selected.centre + "[/" + _this5.tag + "]" + selected.after;
         }
         textarea.value = output;
 
-        _get(PopupInputElement.prototype.__proto__ || Object.getPrototypeOf(PopupInputElement.prototype), "close", _this4).call(_this4);
+        _get(PopupInputElement.prototype.__proto__ || Object.getPrototypeOf(PopupInputElement.prototype), "close", _this5).call(_this5);
       });
     }
   }]);
@@ -219,16 +225,16 @@ var PopupColourElement = function (_PopupElement2) {
   function PopupColourElement(title, description, tag, label) {
     _classCallCheck(this, PopupColourElement);
 
-    var _this5 = _possibleConstructorReturn(this, (PopupColourElement.__proto__ || Object.getPrototypeOf(PopupColourElement)).call(this, title, description, tag));
+    var _this6 = _possibleConstructorReturn(this, (PopupColourElement.__proto__ || Object.getPrototypeOf(PopupColourElement)).call(this, title, description, tag));
 
-    _this5.label = label;
-    return _this5;
+    _this6.label = label;
+    return _this6;
   }
 
   _createClass(PopupColourElement, [{
     key: "activate",
     value: function activate(input) {
-      var _this6 = this;
+      var _this7 = this;
 
       var obj = _get(PopupColourElement.prototype.__proto__ || Object.getPrototypeOf(PopupColourElement.prototype), "activate", this).call(this);
 
@@ -251,13 +257,13 @@ var PopupColourElement = function (_PopupElement2) {
         var output = void 0;
         if (attribute.trim() != "") {
           //if the input box is not empty
-          output = selected.before + "[" + _this6.tag + "=" + attribute + "]" + selected.centre + "[/" + _this6.tag + "]" + selected.after;
+          output = selected.before + "[" + _this7.tag + "=" + attribute + "]" + selected.centre + "[/" + _this7.tag + "]" + selected.after;
         } else {
-          output = selected.before + "[" + _this6.tag + "]" + selected.centre + "[/" + _this6.tag + "]" + selected.after;
+          output = selected.before + "[" + _this7.tag + "]" + selected.centre + "[/" + _this7.tag + "]" + selected.after;
         }
         textarea.value = output;
 
-        _get(PopupColourElement.prototype.__proto__ || Object.getPrototypeOf(PopupColourElement.prototype), "close", _this6).call(_this6);
+        _get(PopupColourElement.prototype.__proto__ || Object.getPrototypeOf(PopupColourElement.prototype), "close", _this7).call(_this7);
       });
     }
   }]);
@@ -271,17 +277,17 @@ var PopupComboElement = function (_PopupElement3) {
   function PopupComboElement(title, description, tag, label, options) {
     _classCallCheck(this, PopupComboElement);
 
-    var _this7 = _possibleConstructorReturn(this, (PopupComboElement.__proto__ || Object.getPrototypeOf(PopupComboElement)).call(this, title, description, tag));
+    var _this8 = _possibleConstructorReturn(this, (PopupComboElement.__proto__ || Object.getPrototypeOf(PopupComboElement)).call(this, title, description, tag));
 
-    _this7.label = label;
-    _this7.options = options;
-    return _this7;
+    _this8.label = label;
+    _this8.options = options;
+    return _this8;
   }
 
   _createClass(PopupComboElement, [{
     key: "activate",
     value: function activate(input) {
-      var _this8 = this;
+      var _this9 = this;
 
       var obj = _get(PopupComboElement.prototype.__proto__ || Object.getPrototypeOf(PopupComboElement.prototype), "activate", this).call(this);
 
@@ -302,7 +308,6 @@ var PopupComboElement = function (_PopupElement3) {
         for (var _iterator = this.options[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var element = _step.value;
 
-          console.log(element);
           var option = document.createElement("option");
           option.textContent = element;
           option.setAttribute("type", element);
@@ -328,10 +333,10 @@ var PopupComboElement = function (_PopupElement3) {
 
         var attribute = select.options[select.selectedIndex].value;
         var selected = getSelectedText(textarea);
-        var output = selected.before + "[" + _this8.tag + "=" + attribute + "]" + selected.centre + "[/" + _this8.tag + "]";
+        var output = selected.before + "[" + _this9.tag + "=" + attribute + "]" + selected.centre + "[/" + _this9.tag + "]";
         textarea.value = output;
 
-        _get(PopupComboElement.prototype.__proto__ || Object.getPrototypeOf(PopupComboElement.prototype), "close", _this8).call(_this8);
+        _get(PopupComboElement.prototype.__proto__ || Object.getPrototypeOf(PopupComboElement.prototype), "close", _this9).call(_this9);
       });
     }
   }]);
@@ -346,7 +351,7 @@ function addElementToToolbar(element) {
   var para = document.createElement("div");
   para.classList.add("toolbar-button");
   para.textContent = element.title;
-  document.querySelector(".toolbar").appendChild(para);
+  $(".toolbar").appendChild(para);
   para.addEventListener("click", function () {
     element.activate(textarea);
   });
@@ -356,7 +361,7 @@ function addSeparator() {
   var para = document.createElement("div");
   para.classList.add("toolbar-separator");
   para.textContent = " | ";
-  document.querySelector(".toolbar").appendChild(para);
+  $(".toolbar").appendChild(para);
 }
 
 //Get selected text and return everything before it, inside, and after.

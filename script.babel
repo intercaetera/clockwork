@@ -1,6 +1,10 @@
 //The object editables are at the bottom of the file.
 
-let textarea = document.querySelector("#text-field")
+function $(q) {
+  return document.querySelector(q)
+}
+
+let textarea = $("#text-field")
 
 class ToolbarElement {
   constructor(title, description) {
@@ -40,12 +44,10 @@ class GenericElement extends GenericStaticElement {
 }
 
 //Top-level class for popups.
-class PopupElement {
+class PopupElement extends ToolbarElement {
   constructor(title, description, tag) {
-    this.title = title
-    this.description = description
+    super(title, description)
     this.tag = tag
-    addElementToToolbar(this)
   }
 
   activate(input) {
@@ -53,7 +55,7 @@ class PopupElement {
     //Generate all the popup elements.
     let popup = document.createElement("div")
     popup.classList.add("popup")
-    document.querySelector(".wrapper").appendChild(popup)
+    $(".wrapper").appendChild(popup)
 
     let popupTitleContainer = document.createElement("div")
     popupTitleContainer.classList.add("title")
@@ -98,8 +100,8 @@ class PopupElement {
 
   close() {
     //Close the popup.
-    let wrapper = document.querySelector(".wrapper")
-    let popup = document.querySelector(".popup")
+    let wrapper = $(".wrapper")
+    let popup = $(".popup")
     wrapper.removeChild(popup)
   }
 }
@@ -203,7 +205,6 @@ class PopupComboElement extends PopupElement {
     obj.popupForm.insertBefore(select, obj.popupForm.childNodes[1])
 
     for(let element of this.options) {
-      console.log(element)
       let option = document.createElement("option")
       option.textContent = element
       option.setAttribute("type", element)
@@ -229,7 +230,7 @@ function addElementToToolbar(element) {
   let para = document.createElement("div")
   para.classList.add("toolbar-button")
   para.textContent = element.title
-  document.querySelector(".toolbar").appendChild(para)
+  $(".toolbar").appendChild(para)
   para.addEventListener("click", () => {
     element.activate(textarea)
   })
@@ -239,7 +240,7 @@ function addSeparator() {
   let para = document.createElement("div")
   para.classList.add("toolbar-separator")
   para.textContent = " | "
-  document.querySelector(".toolbar").appendChild(para)
+  $(".toolbar").appendChild(para)
 }
 
 //Get selected text and return everything before it, inside, and after.
